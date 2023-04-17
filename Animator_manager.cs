@@ -16,7 +16,7 @@ public class Animator_manager : MonoBehaviour
         horizontal = Animator.StringToHash("Horizontal");
         vertical = Animator.StringToHash("Vertical");
     }
-    public void UpdateAnimatorValues(float horizontalmovement, float verticalmovement)
+    public void UpdateAnimatorValues(float horizontalmovement, float verticalmovement, bool Isrun)
     {
         float snappedHorizontal;
         float snappedVertical;
@@ -65,6 +65,11 @@ public class Animator_manager : MonoBehaviour
             snappedVertical = 0;
         }
         #endregion
+        if(Isrun)
+        {
+            snappedHorizontal = horizontalmovement;
+            snappedVertical = 2;
+        }
         animator.SetFloat(horizontal, snappedHorizontal, 0.1f, Time.deltaTime);
         animator.SetFloat(vertical, snappedVertical,0.1f, Time.deltaTime);
     }
